@@ -1,0 +1,43 @@
+﻿<p />
+<span style="color: green"><%= flash['executionSuccess'] %></span>
+<p />
+	
+<form action="/admin/requestlogs/search" method="post">
+<input type="hidden" name="tag" value="<%=name%>"/>
+接口：<input type='text' name="face" value="<%= ret?ret.face():0%>"/>
+时间：<input type="month" name="time"  value="<%= ret?ret.time():0%>" step="1">
+<input type="submit" value="统计" />
+</form>	
+
+<table>
+	  <caption>用户ID：<font color=blue><%=name%></font>
+	  <br/>
+	  请求数：<font color=red><%= ret?ret.req_sum():0%></font> 用户数：<font color=red><%= ret?ret.ip_sum():0%></font>
+	  </caption>
+	  <caption>总共<%=requestLogs.length %></caption>
+    <tr>
+    	  <th>序号</th> 
+    	  <th>产品ID</th>
+        <th>Ip地址</th>
+        <th>接口类型</th>
+        <th>创建时间</th>
+        
+    </tr>
+    <% requestLogs.forEach(function(reqLogs,pos) { %>
+        <tr>
+        	  <td><%=(pos+1)+parseInt(page)*40 %></td>
+        	  <td>
+                <%= reqLogs.name() %>
+            </td>
+            <td>
+                <%= reqLogs.ip() %>
+            </td>
+            <td><%= reqLogs.interface_type() %></td>
+            <td><%= reqLogs.req_time() %></td>
+        
+        </tr>
+    <% }); %>
+</table>
+第<%=parseInt(page)+1 %>页
+<a class="" href="/admin/requestlogs/page/<%= parseInt(page)-1 %>/<%=name%>"><em><%= parseInt(page)===0? '' :'上一页'%></em></a> 
+<a class="" href="/admin/requestlogs/page/<%= parseInt(page)+1 %>/<%=name%>"><em><%= requestLogs.length===0? '' :'下一页'%></em></a>

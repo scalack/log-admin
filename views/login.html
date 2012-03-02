@@ -1,0 +1,18 @@
+﻿<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+<p />
+<span style="color: green"><%= flash['executionSuccess'] %></span>
+<p />
+        <form action="admin/login" method="post">
+           输入用户名登陆: 
+           <p /> 
+           用户名: <input name="name"/>
+            <p />
+           密&nbsp;&nbsp;码: <input name="password"  type="password"/>
+            <input type="submit" value="登陆" />
+        </form>
+    </body>
+</html>

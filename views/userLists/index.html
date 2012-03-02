@@ -1,0 +1,28 @@
+﻿<a href="/admin/userlist/add">添加</a>
+<p />
+<span style="color: green"><%= flash['userListsSuccess'] %></span>
+<p />
+<table>
+	  <caption>总共<%=userLists.length %></caption>
+    <tr>
+        <th>名   称</th>
+        <th>产品ID</th>
+        <th>操   作</th>
+    </tr>
+    <% userLists.forEach(function(userList) { %>
+        <tr>
+            <td>
+             <a href="/admin/requestlogs/<%= userList._name%>"><%= userList.name() %></a> 
+            </td>
+            <td>
+                <%= userList.crypto() %>
+            </td>
+            <td>
+             <a href="/admin/songtop/<%= userList._name%>">歌曲热榜</a>
+               <%h postLink({href: '/admin/userlist/' + userList._name + '/delete',
+                             onclick: "if(!window.confirm('Are you sure?')) return false;",
+                             text: '删除'}) %>
+            </td>
+        </tr>
+    <% }); %>
+</table>

@@ -1,0 +1,8 @@
+﻿<form action="/admin/requestlogs/search" method="post">
+<input type="hidden" name="tag" value="<%=name%>"/>
+接口：<input type='text' name="face" />
+时间：<input type="month" name="time" step="1">
+<input type="submit" value="统计" />
+</form>	
+ <caption>用户ID：<%=name%></caption>
+请求数：<%=ret.req_sum()%> 用户数：<%= ret.ip_sum()%>

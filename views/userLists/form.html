@@ -1,0 +1,8 @@
+﻿<label for="name">产品名称:</label>
+<input type="text" id="name" name="userLists.name" value="<%= userLists.name() %>" />
+<span style="color: red"><%= error(userLists, 'name', locale) %></span>
+
+<p />
+
+<input type="submit" value="Save" />
+<a href="/admin/userlist">Back</a>

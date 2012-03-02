@@ -1,0 +1,27 @@
+﻿<a href="/admin/users/add">添加</a>
+<p />
+<span style="color: green"><%= flash['executionSuccess'] %></span>
+<p />
+<table>
+    <tr>
+        <th>用户名</th>
+        <th>Email</th>
+        <th>操作</th>
+    </tr>
+    <% users.forEach(function(user) { %>
+        <tr>
+            <td>
+                <%= user.name() %>
+            </td>
+            <td>
+                <%= user.email() %>
+            </td>
+            <td>
+               <a href="/admin/users/<%= user._name %>/edit">编辑</a>
+               <%h postLink({href: '/admin/users/' + user._name + '/delete',
+                             onclick: "if(!window.confirm('Are you sure?')) return false;",
+                             text: '删除'}) %>
+            </td>
+        </tr>
+    <% }); %>
+</table>

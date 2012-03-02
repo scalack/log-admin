@@ -1,0 +1,25 @@
+﻿<h1>歌曲热度排行榜</h1>
+
+<table>
+	  <caption>用户ID：<font color=blue><%=name%></font>
+	  <br/>
+	 总共<%=tops.length %></caption>
+    <tr>
+    	  <th>序号</th> 
+    	  <th>歌曲ID</th>
+        <th>歌曲名称</th>
+  
+    </tr>
+    <% tops.forEach(function(top,pos) { %>
+        <tr>
+        	  <td><%=pos %></td>
+        	  <td>
+                <%= top.songId() %>
+            </td>
+            <td>
+               <%= top.songName() %>
+            </td>
+  
+        </tr>
+    <% }); %>
+</table>
